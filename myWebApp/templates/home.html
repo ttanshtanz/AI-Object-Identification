@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Home</title>
+</head>
+<body>
+	<h1>This is image upload page</h1>
+
+<!--
+	**enctype is used to split up data into several parts n send to server 
+	**csrf_token[Cross-Site Request Forgery] : Django will generate a unique token for that form and check it is same fr both users. Ensure authentication and prevent csrf attack
+-->
+	<form action="{% url 'imgUpload:imageprocess' %}" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input id="image" type="file" name="image">
+		<input type="submit" value="Submit">
+	</form>
+
+
+
+</body>
+</html>
